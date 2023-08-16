@@ -10,12 +10,17 @@
     margin-left: 8px;
 }
 
+table {
+    margin: 0 auto;
+    padding: 8px;
+}
+
 td {
     padding: 6px;
     font-size: 20px;
 }
 
-.test {
+.divider {
     background: linear-gradient(90deg, rgba(250, 255, 0, 1) 0%, rgba(255, 0, 0, 1) 100%);
     padding: 4px;
 }
