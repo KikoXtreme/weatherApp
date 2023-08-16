@@ -1,0 +1,21 @@
+.footer {
+    background-color: black;
+    color: orange;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.footer-p {
+    padding: 6px;
+    margin: 0;
+}
+
+.footer-a {
+    color: white;
+}
+
+.footer-a:hover {
+    color: rgb(130, 130, 130);
+}

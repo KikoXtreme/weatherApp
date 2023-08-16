@@ -1,10 +1,11 @@
 import './App.css';
-import Forecast from './components/Forecast/Forecats';
+// import CityLocator from './components/CityLocator/CityLocator';
+import Weather from './components/Weather/Weather';
 
 function App() {
   return (
     <div className="App">
-      <Forecast />
+      <Weather />
     </div>
   );
 }
