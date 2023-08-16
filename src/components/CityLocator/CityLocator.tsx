@@ -44,10 +44,7 @@ const CityLocator = () => {
             {cityOptions.length > 0 && (
                 <ul className="dropdown">
                     {cityOptions.map((city: any) => (
-                        <li
-                            key={city.id}
-                            onClick={() => handleCitySelect(city)}
-                        >
+                        <li key={city.id} onClick={() => handleCitySelect(city)}>
                             {city.name}, {city.country}
                         </li>
                     ))}
