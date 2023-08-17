@@ -41,7 +41,7 @@ const Forecast = ({ selectedCity }: CityProps) => {
                                 <td><i className="fa-solid fa-temperature-low"></i></td>
                             </tr>
                             <tr>
-                                <td>Feelslike:</td>
+                                <td>Feels Like:</td>
                                 <td>{dailyForecast.current.feelslike_c}&#176;C</td>
                                 <td><i className="fa-solid fa-temperature-three-quarters"></i></td>
                             </tr>
