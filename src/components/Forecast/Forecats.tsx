@@ -3,6 +3,8 @@ import { CityProps, ForecastData } from "../../interfaces/interfaces";
 import "../../css/forecast.css";
 import "../../css/spinner.css";
 import { apiUtils } from "../../utils/apiUtils";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Forecast = ({ selectedCity }: CityProps) => {
     const { name, country, lat, lon } = selectedCity;
@@ -13,8 +15,10 @@ const Forecast = ({ selectedCity }: CityProps) => {
             const response = await fetch(`${apiUtils.baseApiJson}?key=${apiUtils.apiKeyTest}&q=${lat},${lon}&aqi=no`);
             const data = await response.json();
             setDailyForecast(data);
+            toast.success('Weather data updated!');
         } catch (error) {
             console.error("Data not received!", error);
+            toast.error('City found, but data not received!');
         }
     }, [lat, lon]);
 

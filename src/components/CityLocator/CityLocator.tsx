@@ -3,6 +3,8 @@ import { City } from "../../interfaces/interfaces";
 import Forecast from "../Forecast/Forecats";
 import "../../css/cityLocator.css";
 import { apiUtils } from "../../utils/apiUtils";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const CityLocator = () => {
     const [cityInput, setCityInput] = useState("");
@@ -15,7 +17,8 @@ const CityLocator = () => {
             const data = await response.json();
             setCityOptions(data);
         } catch (error) {
-            console.error("Data not received!", error);
+            console.error("Data not received", error);
+            toast.error('City not found, data not received!');
         }
     }
 
