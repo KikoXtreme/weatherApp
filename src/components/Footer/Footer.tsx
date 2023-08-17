@@ -5,9 +5,9 @@ const Footer = () => {
         <div className='footer'>
             <p className='footer-p'>
                 &copy; {new Date().getFullYear()} Weather App. All rights reserved. |{' '}
-                <a className='footer-a' href="/">T&C</a> |{' '}
-                <a className='footer-a' href="/">Privacy Policy</a> |{' '}
-                <a className='footer-a' href="/">Contact Us</a>
+                <a className='footer-a' href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">T&C</a> |{' '}
+                <a className='footer-a' href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |{' '}
+                <a className='footer-a' href="https://www.weatherapi.com/" target="_blank" rel="noopener noreferrer">Contact Us</a>
             </p>
         </div>
     );

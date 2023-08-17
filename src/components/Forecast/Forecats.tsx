@@ -1,17 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
+import { CityProps, ForecastData } from "../../interfaces/interfaces";
 import "../../css/forecast.css";
 import "../../css/spinner.css";
 
-const Forecast = ({ selectedCity }: any) => {
+const Forecast = ({ selectedCity }: CityProps) => {
     const { name, country, lat, lon } = selectedCity;
-    const [dailyForecast, setDailyForecast] = useState<any>();
+    const [dailyForecast, setDailyForecast] = useState<ForecastData>();
 
-    const baseAPiJson = 'http://api.weatherapi.com/v1/current.json'
+    const baseApi = 'http://api.weatherapi.com/v1/current.json'
     const apiKeyTest = '8733ea68108f4d09ba361152231608';
 
     const fetchForecast = useCallback(async () => {
         try {
-            const response = await fetch(`${baseAPiJson}?key=${apiKeyTest}&q=${lat},${lon}&aqi=no`);
+            const response = await fetch(`${baseApi}?key=${apiKeyTest}&q=${lat},${lon}&aqi=no`);
             const data = await response.json();
             setDailyForecast(data);
         } catch (error) {
