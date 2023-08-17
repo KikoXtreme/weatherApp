@@ -23,8 +23,8 @@ const CityLocator = () => {
     const handleCitySelect = (city: any) => {
         console.log('city', city)
         setSelectedCity(city);
-        setCityInput(city.name); // Set the input to the selected city name
-        setCityOptions([]); // Clear the dropdown options
+        setCityInput(city.name);
+        setCityOptions([]);
     }
 
     const handleInputChange = (e: any) => {
@@ -33,7 +33,7 @@ const CityLocator = () => {
     }
 
     return (
-        <div>
+        <div style={{ position: 'relative' }}>
             <input
                 type="text"
                 placeholder="Enter city name"
@@ -42,13 +42,16 @@ const CityLocator = () => {
             />
 
             {cityOptions.length > 0 && (
-                <ul className="dropdown">
-                    {cityOptions.map((city: any) => (
-                        <li key={city.id} onClick={() => handleCitySelect(city)}>
-                            {city.name}, {city.country}
-                        </li>
-                    ))}
-                </ul>
+                <>
+                    <div className="overlay" onClick={() => setCityOptions([])} />
+                    <ul className="dropdown">
+                        {cityOptions.map((city: any) => (
+                            <li key={city.id} onClick={() => handleCitySelect(city)}>
+                                {city.name}, {city.country}
+                            </li>
+                        ))}
+                    </ul>
+                </>
             )}
 
             {selectedCity && <Forecast selectedCity={selectedCity} />}
