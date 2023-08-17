@@ -2,18 +2,16 @@ import { ChangeEvent, useState } from "react";
 import { City } from "../../interfaces/interfaces";
 import Forecast from "../Forecast/Forecats";
 import "../../css/cityLocator.css";
+import { apiUtils } from "../../utils/apiUtils";
 
 const CityLocator = () => {
     const [cityInput, setCityInput] = useState("");
     const [cityOptions, setCityOptions] = useState([]);
     const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
-    const baseApi = 'http://api.weatherapi.com/v1';
-    const apiKeyTest = '8733ea68108f4d09ba361152231608';
-
     const fetchCity = async () => {
         try {
-            const response = await fetch(`${baseApi}/search.json?key=${apiKeyTest}&q=${cityInput}`);
+            const response = await fetch(`${apiUtils.baseApi}/search.json?key=${apiUtils.apiKeyTest}&q=${cityInput}`);
             const data = await response.json();
             setCityOptions(data);
         } catch (error) {
@@ -22,7 +20,6 @@ const CityLocator = () => {
     }
 
     const handleCitySelect = (city: City) => {
-        console.log('city', city)
         setSelectedCity(city);
         setCityInput(city.name);
         setCityOptions([]);
@@ -41,7 +38,6 @@ const CityLocator = () => {
                 value={cityInput}
                 onChange={handleInputChange}
             />
-
             {cityOptions.length > 0 && (
                 <>
                     <div className="overlay" onClick={() => setCityOptions([])} />
@@ -54,7 +50,6 @@ const CityLocator = () => {
                     </ul>
                 </>
             )}
-
             {selectedCity && <Forecast selectedCity={selectedCity} />}
         </div>
     );
