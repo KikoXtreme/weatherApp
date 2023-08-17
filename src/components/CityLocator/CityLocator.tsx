@@ -24,7 +24,7 @@ const CityLocator = () => {
 
     const handleCitySelect = (city: City) => {
         setSelectedCity(city);
-        setCityInput(city.name);
+        setCityInput('');
         setCityOptions([]);
     }
 
