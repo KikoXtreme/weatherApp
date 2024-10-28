@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { City } from "../../interfaces/interfaces";
 import Forecast from "../Forecast/Forecats";
 import "../../css/cityLocator.css";
@@ -11,26 +11,31 @@ const CityLocator = () => {
     const [cityOptions, setCityOptions] = useState([]);
     const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
-    const fetchCity = async () => {
-        try {
-            const response = await fetch(`${apiUtils.baseApi}/search.json?key=${apiUtils.apiKeyTest}&q=${cityInput}`);
-            const data = await response.json();
-            setCityOptions(data);
-        } catch (error) {
-            console.error("Data not received", error);
-            toast.error('City not found, data not received!');
+    useEffect(() => {
+        const fetchCity = async () => {
+            try {
+                const response = await fetch(`${apiUtils.baseApi}/search.json?key=${apiUtils.apiKeyTest}&q=${cityInput}`);
+                const data = await response.json();
+                setCityOptions(data);
+            } catch (error) {
+                console.error("Data not received", error);
+                toast.error('City not found, data not received!');
+            }
+        };
+
+        if (cityInput) {
+            fetchCity();
         }
-    }
+    }, [cityInput]);
+
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setCityInput(e.target.value);
+    };
 
     const handleCitySelect = (city: City) => {
         setSelectedCity(city);
         setCityInput('');
         setCityOptions([]);
-    }
-
-    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setCityInput(e.target.value);
-        fetchCity();
     }
 
     return (
